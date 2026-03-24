@@ -1,11 +1,5 @@
-/* =========================================================
-   app.js – Lógica del Reloj · PWA Reloj
-   =========================================================
-*/
-
-const horaDigital       = document.getElementById('hora-digital');
-const fechaTexto        = document.getElementById('fecha-texto');
-const contenedorMarcadores = document.getElementById('marcadores-horas');
+const horaDigital = document.getElementById('hora-digital');
+const fechaTexto  = document.getElementById('fecha-texto');
 
 const NOMBRES_MESES = [
   'enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio',
@@ -43,17 +37,12 @@ function actualizarFecha(ahora) {
 
 
 function actualizarReloj() {
-  const ahora = new Date(); // Obtener hora actual del sistema
-
-  actualizarManecillas(ahora);
+  const ahora = new Date();
 
   actualizarHoraDigital(ahora);
   actualizarFecha(ahora);
 }
 
-dibujarMarcadoresHora();
-
 actualizarReloj();
 
-//Actualizar el reloj cada 1000 ms (1 segundo)
 setInterval(actualizarReloj, 1000);
