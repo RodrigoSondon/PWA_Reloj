@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json.schemastore.org/web-manifest-combined.json",
+
+  "name": "PWA Reloj",
+  "short_name": "Reloj",
+  "description": "Reloj digital y analógico en tiempo real. Muestra la hora del sistema actualizada cada segundo.",
+
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+
+  "orientation": "portrait",
+
+  "background_color": "#0d1b2a",
+  "theme_color": "#0d1b2a",
+
+  "lang": "es",
+  "dir": "ltr",
+
+  "icons": [
+    {
+      "src": "icon.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "icon.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+
+  "categories": ["utilities"],
+
+  "screenshots": []
+}

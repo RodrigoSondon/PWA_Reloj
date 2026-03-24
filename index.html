@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#000000" />
+  <meta name="description" content="PWA Reloj – muestra la hora actual del sistema actualizada cada segundo." />
+
+  <!-- Vinculación del manifiesto para permitir instalación como PWA -->
+  <link rel="manifest" href="manifest.json" />
+
+  <!-- Icono de la aplicación para dispositivos Apple -->
+  <link rel="apple-touch-icon" href="icon.png" />
+
+  <!-- Hoja de estilos -->
+  <link rel="stylesheet" href="style.css" />
+
+  <title>PWA Reloj</title>
+</head>
+<body>
+
+  <!-- Contenedor principal de la aplicación -->
+  <main class="contenedor-principal">
+
+    <!-- Título visible -->
+    <h1 class="titulo-app">Hora exacta</h1>
+
+    <!-- Hora digital -->
+    <div class="hora-digital-contenedor">
+      <time id="hora-digital" class="hora-digital" datetime="">00:00:00</time>
+      <p id="fecha-texto" class="fecha-texto"></p>
+    </div>
+
+    <!-- SVG oculto — necesario para que app.js no lance errores -->
+    <svg id="svg-reloj" style="display:none" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+      <g id="marcadores-horas"></g>
+      <line id="manecilla-horas"   x1="100" y1="100" x2="100" y2="45"  />
+      <line id="manecilla-minutos" x1="100" y1="100" x2="100" y2="28"  />
+      <line id="manecilla-segundos" x1="100" y1="115" x2="100" y2="22" />
+    </svg>
+
+  </main>
+
+  <!-- Script principal con la lógica del reloj -->
+  <script src="app.js"></script>
+
+  <!-- Registro del Service Worker -->
+  <script>
+    // Registro del service worker solo si el navegador lo soporta
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', function () {
+        navigator.serviceWorker
+          .register('./service-worker.js')
+          .then(function (registro) {
+            console.log('✅ Service Worker registrado con éxito:', registro.scope);
+          })
+          .catch(function (error) {
+            console.error('❌ Error al registrar el Service Worker:', error);
+          });
+      });
+    }
+  </script>
+
+</body>
+</html>
